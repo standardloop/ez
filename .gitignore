@@ -1,0 +1,65 @@
+# Prerequisites
+*.d
+
+# Intermediates
+*.i
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# srcraries
+*.src
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dysrc
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# Custom
+.DS_Store
+main
+arm64/HelloSilicon
+lectures/friday/diagram.png
+lectures/friday/ECE437-SingleCycle.png
+lectures/friday/FUTURE.md
+lectures/friday/main.s
+
