@@ -151,5 +151,5 @@ void freeListNode(ListNode *list_node)
     }
     // free the value
     // in our case, we are using int so there is nothing to free
-    return;
+    free(list_node);
 }
