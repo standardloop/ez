@@ -54,6 +54,26 @@
 - apt
 - C locally
 
+## Words of Wisom
+
+Programming is an Art. There is beauty in the logic and organization of information.
+
+In League of Legends. It takes a long time to get to the point where you understand the game and then can start actually playing.
+
+Programming is the same. You need understand what you can do and what tools can accomblish it.
+
+You do not have to learn how to solve everything single problem. You have to learn how to identify patterns and common strategies to tackle them.
+
+---
+
+Later on:
+
+Programming should be the easy part. You are just implementing the logic.
+
+The hard part is designing the solution given constraints.
+
+
+
 ## Compilers and Programming Languages
 
 - What does it mean to create a programming language?

@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
         printf("Usage: %s filename\n", argv[0]);
         return 1;
     }
-    createNewFile(argv[1]);
+    // TODO: allow this to support multiple files
+    (void)createNewFile(argv[1]);
 
     return EXIT_SUCCESS;
 }
