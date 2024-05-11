@@ -58,8 +58,12 @@ int main(void)
 {
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr) / sizeof(arr[0]);
-    bubbleSortV1(arr, n);
-    printf("Sorted array: \n");
+    printf("Array before: \n");
+    printArray(arr, n);
+
+    (void)bubbleSortV1(arr, n);
+
+    printf("\nSorted array: \n");
     printArray(arr, n);
     return EXIT_SUCCESS;
 }
