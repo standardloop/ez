@@ -8,6 +8,9 @@ clean:
 build: main.c
 	@$(CC) $(CC_FLAGS) \
 	main.c \
+	card.c \
+	hand.c \
+	deck.c \
 	-o main
 
 run:
