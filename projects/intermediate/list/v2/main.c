@@ -32,6 +32,5 @@ int main(void)
     (void)ListPrint(example);
 
     (void)ListFree(example);
-
     return EXIT_SUCCESS;
 }

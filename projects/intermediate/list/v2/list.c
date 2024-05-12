@@ -12,7 +12,7 @@ void freeListNode(ListNode *);
 
 List *ListInit(int max)
 {
-    List *list = (List *)malloc(sizeof(List));
+    List *list = malloc(sizeof(List));
     if (list == NULL)
     {
         return NULL;
@@ -126,10 +126,15 @@ int ListAddToEnd(List *list, int value)
 
 void ListFree(List *list)
 {
+    if (list == NULL)
+    {
+        return;
+    }
     if (list->head != NULL)
     {
         freeAllListNodes(list->head);
     }
+    free(list);
 }
 
 void freeAllListNodes(ListNode *head)
