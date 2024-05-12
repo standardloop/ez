@@ -40,5 +40,48 @@ void FreeAllCards(Card *head)
 // Cool Ascii art need for this one;
 void PrintCard(Card *card)
 {
-    printf("%c of %s\n", card->value, card->suit);
+    if (card == NULL)
+    {
+        return;
+    }
+    for (int h = 0; h < CARD_HEIGHT; h++)
+    {
+        if (h != 0 && h != CARD_HEIGHT - 1)
+        {
+            printf("|");
+        }
+        for (int w = 0; w < CARD_WIDTH; w++)
+        {
+            if (h == 0 || h == CARD_HEIGHT - 1)
+            {
+                if (w == 0 || w == CARD_WIDTH - 1)
+                {
+                    printf(" ");
+                }
+                else if (h == 0)
+                {
+                    printf("_");
+                }
+                else if (h == CARD_HEIGHT - 1)
+                {
+                    printf("~");
+                }
+            }
+            else
+            {
+                if (w == CARD_WIDTH - 1)
+                {
+                    printf("|");
+                }
+                else
+                {
+                    printf(" ");
+                }
+            }
+        }
+        // printf("|\n");
+        printf("\n");
+    }
+    //exit(1);
+    // printf("%c of %s\n", card->value, card->suit);
 }

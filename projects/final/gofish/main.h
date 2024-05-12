@@ -8,7 +8,7 @@
 
 #define ERROR_FIXME -1
 
-#define CARD_WIDTH 5
+#define CARD_WIDTH 10
 #define CARD_HEIGHT 10
 
 #include <stdio.h>
