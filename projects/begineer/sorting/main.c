@@ -2,13 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-void swap(int *xp, int *yp)
-{
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
-
 void bubbleSortV2(int arr[], int n)
 {
     int i, j;
@@ -44,6 +37,29 @@ void bubbleSortV1(int arr[], int n)
             }
         }
     }
+}
+
+void insertionSort(int arr[], int n)
+{
+    int key, j;
+    for (int i = 1; i < n; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+void swap(int *xp, int *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
 }
 
 void printArray(int arr[], int size)
