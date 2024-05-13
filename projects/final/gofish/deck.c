@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 #include "./main.h"
 
@@ -8,15 +9,27 @@ int placeCardOnBottomOfDeck(Deck *, Card *);
 int placeCardOnTopOfDeck(Deck *, Card *);
 int placeCardRandomlyInDeck(Deck *, Card *);
 
-void ShuffleDeck(Card *head)
+bool isDeckEmpty(Deck *);
+
+bool isDeckEmpty(Deck *deck)
 {
-    if (head == NULL)
+    return (deck->size == 0 && deck->cards == NULL);
+}
+
+void ShuffleDeck(Deck *deck)
+{
+    if (deck == NULL || isDeckEmpty(deck))
     {
+        for (int i = deck->size - 1; i > 0; i--)
+        {
+            //int j = rand() % (i + 1);
+            Swap();
+        }
         return;
     }
 }
 
-Deck *InitDeck(bool shuffle)
+Deck *InitDeck()
 {
     Deck *deck = malloc(sizeof(Deck));
     if (deck == NULL)
@@ -50,47 +63,48 @@ Deck *InitDeck(bool shuffle)
 
         for (enum CardValue enum_card_value = Ace; enum_card_value < NUM_CARDS_IN_SUITS; enum_card_value++)
         {
-            char char_card_value;
+            char *char_card_value;
             switch (enum_card_value)
             {
             case Ace:
-                char_card_value = 'A';
+                char_card_value = "A";
                 break;
             case Two:
-                char_card_value = '2';
+                char_card_value = "2";
                 break;
             case Three:
-                char_card_value = '3';
+                char_card_value = "3";
                 break;
             case Four:
-                char_card_value = '4';
+                char_card_value = "4";
                 break;
             case Five:
-                char_card_value = '5';
+                char_card_value = "5";
                 break;
             case Six:
-                char_card_value = '6';
+                char_card_value = "6";
                 break;
             case Seven:
-                char_card_value = '7';
+                char_card_value = "7";
                 break;
             case Eight:
-                char_card_value = '8';
+                char_card_value = "8";
                 break;
             case Nine:
-                char_card_value = '9';
+                char_card_value = "9";
                 break;
             case Ten:
-                char_card_value = 'T';
+                // char_card_value = "10";
+                char_card_value = "T";
                 break;
             case Jack:
-                char_card_value = 'J';
+                char_card_value = "J";
                 break;
             case Queen:
-                char_card_value = 'Q';
+                char_card_value = "Q";
                 break;
             case King:
-                char_card_value = 'K';
+                char_card_value = "K";
                 break;
             default:
                 break;
@@ -100,6 +114,8 @@ Deck *InitDeck(bool shuffle)
             if (card == NULL)
             {
                 // FIXME mem leak
+                printf("Couldn't allocate memory for a card\n");
+                exit(EXIT_FAILURE);
                 return NULL;
             }
             (void)PlaceCardInDeck(deck, card, 'b');
@@ -111,11 +127,10 @@ Deck *InitDeck(bool shuffle)
         FreeDeck(deck);
         return NULL;
     }
-    deck->size = NUM_CARDS_IN_STANDARD_DECK;
-
-    if (shuffle)
+    if (deck->size != NUM_CARDS_IN_STANDARD_DECK)
     {
-        ShuffleDeck(deck->cards);
+        printf("[FATAL]: couldn't create enough cards for deck of size: %d != %d\n", deck->size, NUM_CARDS_IN_STANDARD_DECK);
+        exit(1);
     }
 
     return deck;
@@ -225,7 +240,7 @@ void PrintDeck(Deck *deck)
     Card *card_iterator = deck->cards;
     while (card_iterator != NULL)
     {
-        (void)PrintCard(card_iterator);
+        (void)PrintCard(card_iterator, true);
         card_iterator = card_iterator->next;
     }
 }

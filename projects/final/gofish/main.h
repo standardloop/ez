@@ -4,11 +4,11 @@
 #define NUM_CARDS_IN_STANDARD_DECK 52 // no jokers for now
 #define HAND_MAX_SIZE 52
 #define NUM_SUITS 4
-#define NUM_CARDS_IN_SUITS NUM_CARDS_IN_STANDARD_DECK / NUM_SUITS
+#define NUM_CARDS_IN_SUITS (NUM_CARDS_IN_STANDARD_DECK / NUM_SUITS)
 
 #define ERROR_FIXME -1
 
-#define CARD_WIDTH 10
+#define CARD_WIDTH 12
 #define CARD_HEIGHT 10
 
 #include <stdio.h>
@@ -48,7 +48,9 @@ typedef struct card
 {
     struct card *next;
     char *suit;
-    char value;
+    char *turned_suit;
+    char *value;
+    char *turned_value;
 } Card;
 
 typedef struct
@@ -66,10 +68,10 @@ typedef struct
     Card *cards;
 } Deck;
 
-void PrintCard(Card *);
+void PrintCard(Card *, bool);
 void FreeCard(Card *);
 void FreeAllCards(Card *);
-Card *InitCard(char *, char);
+Card *InitCard(char *, char *);
 
 int PutCardInHand(Hand *, Card *);
 Card *GetTopOfDeck(Deck *);
@@ -79,7 +81,8 @@ int PlaceCardInDeck(Deck *, Card *, char);
 Hand *InitHand(char *);
 void FreeHand(Hand *);
 
-Deck *InitDeck(bool);
+Deck *InitDeck();
+void ShuffleDeck(Deck *);
 void FreeDeck(Deck *);
 void PrintDeck(Deck *);
 

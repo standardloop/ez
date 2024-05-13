@@ -7,13 +7,18 @@
 
 int main(void)
 {
-    Deck *deck = InitDeck(false);
+    Deck *deck = InitDeck();
     if (deck == NULL)
     {
         printf("[FATAL]: Couldn't allocate memory for Deck\n");
         return EXIT_FAILURE;
     }
     (void)PrintDeck(deck);
+
+    (void)ShuffleDeck(deck);
+
+    (void)PrintDeck(deck);
+
     (void)FreeDeck(deck);
 
     // size_t josh = 5;

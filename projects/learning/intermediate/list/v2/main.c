@@ -28,8 +28,19 @@ int main(void)
     (void)ListAddToEnd(example, 9);
     (void)ListAddToEnd(example, 10);
     (void)ListAddToFront(example, -2);
-
     (void)ListPrint(example);
+
+    (void)ListSwap(example, 0, 1);
+    (void)ListPrint(example);
+
+    // (void)ListSwap(example, 8, 0);
+    // (void)ListPrint(example);
+
+    // (void)ListSwap(example, 8, 9);
+    // (void)ListPrint(example);
+
+    // (void)ListSwap(example, 1, 3);
+    // (void)ListPrint(example);
 
     (void)ListFree(example);
     return EXIT_SUCCESS;
