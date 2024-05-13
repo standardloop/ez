@@ -32,10 +32,9 @@ int main(void)
     (void)ListSwap(list, 0, 1);
     (void)ListSwap(list, 1, 0);
     (void)ListSwap(list, 0, list->size - 1);
-    (void)ListSwap(list, 8, 0);
-    (void)ListSwap(list, 8, 9);
-    (void)ListSwap(list, 1, 3);
-
+    (void)ListSwap(list, 0, list->size - 1);
+    (void)ListSwap(list, list->size - 2, list->size - 1);
+    (void)ListSwap(list, list->size - 2, list->size - 1);
     (void)ListPrint(list);
     (void)ListFree(list);
 

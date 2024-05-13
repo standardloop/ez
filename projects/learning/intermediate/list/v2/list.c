@@ -243,6 +243,4 @@ void ListSwap(List *list, int swap_index_1, int swap_index_2)
     ListNode *temp = swap_index_1_ptr->next;
     swap_index_1_ptr->next = swap_index_2_ptr->next;
     swap_index_2_ptr->next = temp;
-
-    return;
 }
