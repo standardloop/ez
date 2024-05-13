@@ -23,5 +23,6 @@ int ListAddToFront(List *, int);
 void ListPrint(List *);
 void ListFree(List *);
 void ListSwap(List *, int, int);
+int ListDelete(List *, int );
 
 #endif

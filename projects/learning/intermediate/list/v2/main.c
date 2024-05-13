@@ -5,43 +5,47 @@
 
 int main(void)
 {
-    List *example = ListInit(20);
-    if (example == NULL)
+    List *list = ListInit(20);
+    if (list == NULL)
     {
         printf("Could not allocate memory for list!\n");
         return EXIT_FAILURE;
     }
     int list_size;
-    list_size = ListAddToEnd(example, 0);
+    list_size = ListAddToEnd(list, 0);
 
     (void)printf("List Size is now: %d\n", list_size);
-    (void)ListPrint(example);
-    (void)ListAddToEnd(example, 1);
-    (void)ListAddToEnd(example, 2);
-    (void)ListAddToEnd(example, 3);
-    (void)ListAddToEnd(example, 4);
-    (void)ListAddToEnd(example, 5);
-    (void)ListAddToEnd(example, 6);
-    (void)ListAddToEnd(example, 7);
-    (void)ListAddToEnd(example, 8);
-    (void)ListAddToFront(example, -1);
-    (void)ListAddToEnd(example, 9);
-    (void)ListAddToEnd(example, 10);
-    (void)ListAddToFront(example, -2);
-    (void)ListPrint(example);
+    (void)ListPrint(list);
+    (void)ListAddToEnd(list, 1);
+    (void)ListAddToEnd(list, 2);
+    (void)ListAddToEnd(list, 3);
+    (void)ListAddToEnd(list, 4);
+    (void)ListAddToEnd(list, 5);
+    (void)ListAddToEnd(list, 6);
+    (void)ListAddToEnd(list, 7);
+    (void)ListAddToEnd(list, 8);
+    (void)ListAddToFront(list, -1);
+    (void)ListAddToEnd(list, 9);
+    (void)ListAddToEnd(list, 10);
+    (void)ListAddToFront(list, -2);
+    (void)ListPrint(list);
 
-    (void)ListSwap(example, 0, 1);
-    (void)ListPrint(example);
+    (void)ListDelete(list, 0);
+    (void)ListDelete(list, list->size - 1);
 
-    // (void)ListSwap(example, 8, 0);
-    // (void)ListPrint(example);
+    (void)ListPrint(list);
 
-    // (void)ListSwap(example, 8, 9);
-    // (void)ListPrint(example);
+    (void)ListSwap(list, 0, 1);
+    (void)ListPrint(list);
 
-    // (void)ListSwap(example, 1, 3);
-    // (void)ListPrint(example);
+    // (void)ListSwap(list, 8, 0);
+    // (void)ListPrint(list);
 
-    (void)ListFree(example);
+    // (void)ListSwap(list, 8, 9);
+    // (void)ListPrint(list);
+
+    // (void)ListSwap(list, 1, 3);
+
+    (void)ListFree(list);
     return EXIT_SUCCESS;
 }

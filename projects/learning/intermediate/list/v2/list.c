@@ -49,11 +49,13 @@ bool isListFull(List *list)
 
 void ListPrint(List *list)
 {
-    if (isListEmpty(list))
+    printf("Printing List:\n");
+    if (isListEmpty(list) || list == NULL)
     {
+        printf("List is empty!\n");
         return;
     }
-    printf("Printing List:\n");
+
     ListNode *iterator = list->head;
     while (iterator != NULL)
     {
@@ -159,6 +161,38 @@ void freeListNode(ListNode *list_node)
     free(list_node);
 }
 
+int ListDelete(List *list, int index)
+{
+    if (list == NULL || isListEmpty(list) || index > list->size - 1)
+    {
+        return LIST_ERROR;
+    }
+    if (index == 0)
+    {
+        ListNode *temp = list->head;
+        list->head = list->head->next;
+        (void)freeListNode(temp);
+        list->size--;
+        return list->size;
+    }
+    ListNode *index_node = list->head;
+    ListNode *index_node_prev = list->head;
+
+    for (int i = 0; i < index - 1; i++)
+    {
+        index_node_prev = index_node_prev->next;
+    }
+
+    for (int i = 0; i < index; i++)
+    {
+        index_node = index_node->next;
+    }
+    index_node_prev->next = index_node->next;
+    freeListNode(index_node);
+    list->size--;
+    return list->size;
+}
+
 void ListSwap(List *list, int swap_index_1, int swap_index_2)
 {
     if (list == NULL || (swap_index_1 == swap_index_2) || isListEmpty(list) ||
@@ -215,7 +249,18 @@ void ListSwap(List *list, int swap_index_1, int swap_index_2)
         return;
     }
 
-    // // error checking complete, swapping begin
+    // adjacent swap
+    if (iterator_2_prev == iterator_1)
+    {
+        return;
+    }
+    else if (iterator_1_prev == iterator_2)
+    {
+        return;
+    }
+
+    // error checking complete, swapping begin
+
     // if (iterator_1_prev == NULL)
     // {
     //     printf("[JOSH]: it_1_prev NULL it_1 %d\n", iterator_1->value);
