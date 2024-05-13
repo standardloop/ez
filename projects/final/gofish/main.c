@@ -13,7 +13,7 @@ int main(void)
         printf("[FATAL]: Couldn't allocate memory for Deck\n");
         return EXIT_FAILURE;
     }
-    (void)PrintDeck(deck);
+    //(void)PrintDeck(deck);
 
     (void)ShuffleDeck(deck);
 

@@ -8,6 +8,7 @@
 int placeCardOnBottomOfDeck(Deck *, Card *);
 int placeCardOnTopOfDeck(Deck *, Card *);
 int placeCardRandomlyInDeck(Deck *, Card *);
+void swapCardsInDeck(Deck *, int, int);
 
 bool isDeckEmpty(Deck *);
 
@@ -15,17 +16,78 @@ bool isDeckEmpty(Deck *deck)
 {
     return (deck->size == 0 && deck->cards == NULL);
 }
+void swapCardsInDeck(Deck *deck, int swap_index_1, int swap_index_2)
+{
+    if (deck == NULL || (swap_index_1 == swap_index_2) || isDeckEmpty(deck) || deck->cards == NULL ||
+        swap_index_1 < 0 || swap_index_2 < 0 || swap_index_1 > deck->size || swap_index_2 > deck->size)
+    {
+        printf("Invalid inputs to swapCardsInDeck\n");
+        return;
+    }
+    if (swap_index_1 > swap_index_2)
+    {
+        swapCardsInDeck(deck, swap_index_2, swap_index_1);
+        return;
+    }
+    // printf("Swapping index %d and %d!\n", swap_index_1, swap_index_2);
+    Card *swap_index_1_ptr = deck->cards;
+    Card *swap_index_1_prev_ptr = NULL;
+    Card *swap_index_2_ptr = deck->cards;
+    Card *swap_index_2_prev_ptr = NULL;
+
+    for (int i = 0; i < swap_index_1; i++)
+    {
+        swap_index_1_prev_ptr = swap_index_1_ptr;
+        swap_index_1_ptr = swap_index_1_ptr->next;
+    }
+    for (int i = 0; i < swap_index_2; i++)
+    {
+        swap_index_2_prev_ptr = swap_index_2_ptr;
+        swap_index_2_ptr = swap_index_2_ptr->next;
+    }
+
+    if (swap_index_1_ptr == NULL || swap_index_2_ptr == NULL)
+    {
+        printf("Couldn't located nodes at index in swapCardsInDeck\n");
+        return;
+    }
+    // only need to check head for swap_index_1 because
+    // swap_index_1 is always less than swap_index_2
+    if (swap_index_1_prev_ptr == NULL && swap_index_1_ptr == deck->cards)
+    {
+        deck->cards = swap_index_2_ptr;
+    }
+    else
+    {
+        swap_index_1_prev_ptr->next = swap_index_2_ptr;
+    }
+
+    swap_index_2_prev_ptr->next = swap_index_1_ptr;
+    Card *temp = swap_index_1_ptr->next;
+    swap_index_1_ptr->next = swap_index_2_ptr->next;
+    swap_index_2_ptr->next = temp;
+}
 
 void ShuffleDeck(Deck *deck)
 {
     if (deck == NULL || isDeckEmpty(deck))
     {
-        for (int i = deck->size - 1; i > 0; i--)
-        {
-            //int j = rand() % (i + 1);
-            Swap();
-        }
+        printf("Invalid inputs to ShuffleDeck\n");
         return;
+    }
+    srand(time(NULL));
+    for (int i = deck->size - 1; i > 0; i--)
+    {
+        int j = rand() % (deck->size);
+        if (j == i)
+        {
+            j++;
+            if (j == deck->size - 1)
+            {
+                j -= 2;
+            }
+        }
+        (void)swapCardsInDeck(deck, i, j);
     }
 }
 
@@ -109,7 +171,6 @@ Deck *InitDeck()
             default:
                 break;
             }
-            // printf("%d %c\n", curr_suit, char_card_value);
             Card *card = InitCard(char_suit, char_card_value);
             if (card == NULL)
             {
@@ -240,7 +301,7 @@ void PrintDeck(Deck *deck)
     Card *card_iterator = deck->cards;
     while (card_iterator != NULL)
     {
-        (void)PrintCard(card_iterator, true);
+        (void)PrintCard(card_iterator, false);
         card_iterator = card_iterator->next;
     }
 }
