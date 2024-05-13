@@ -195,114 +195,54 @@ int ListDelete(List *list, int index)
 
 void ListSwap(List *list, int swap_index_1, int swap_index_2)
 {
-    if (list == NULL || (swap_index_1 == swap_index_2) || isListEmpty(list) ||
+    if (list == NULL || (swap_index_1 == swap_index_2) || isListEmpty(list) || list->head == NULL ||
         swap_index_1 < 0 || swap_index_2 < 0 || swap_index_1 > list->size || swap_index_2 > list->size)
     {
         printf("Invalid inputs to ListSwap\n");
         return;
     }
+    if (swap_index_1 > swap_index_2)
+    {
+        ListSwap(list, swap_index_2, swap_index_1);
+        return;
+    }
     printf("Swapping index %d and %d!\n", swap_index_1, swap_index_2);
-    // ListNode *original_head = list->head;
-
-    ListNode *iterator_1_prev = list->head;
-    ListNode *iterator_1 = list->head;
-
-    ListNode *iterator_2_prev = list->head;
-    ListNode *iterator_2 = list->head;
-    if (swap_index_1 == 0)
-    {
-        iterator_1_prev = NULL;
-    }
-    else
-    {
-        for (int i = 0; i < swap_index_1 - 1; i++)
-        {
-            iterator_1_prev = iterator_1_prev->next;
-        }
-    }
+    ListNode *swap_index_1_ptr = list->head;
+    ListNode *swap_index_1_prev_ptr = NULL;
+    ListNode *swap_index_2_ptr = list->head;
+    ListNode *swap_index_2_prev_ptr = NULL;
 
     for (int i = 0; i < swap_index_1; i++)
     {
-        iterator_1 = iterator_1->next;
+        swap_index_1_prev_ptr = swap_index_1_ptr;
+        swap_index_1_ptr = swap_index_1_ptr->next;
+    }
+    for (int i = 0; i < swap_index_2; i++)
+    {
+        swap_index_2_prev_ptr = swap_index_2_ptr;
+        swap_index_2_ptr = swap_index_2_ptr->next;
     }
 
-    if (swap_index_2 == 0)
+    if (swap_index_1_ptr == NULL || swap_index_2_ptr == NULL)
     {
-        iterator_2_prev = NULL;
+        printf("Couldn't located nodes at index in ListSwap\n");
+        return;
+    }
+    // only need to check head for swap_index_1 because
+    // swap_index_1 is always less than swap_index_2
+    if (swap_index_1_prev_ptr == NULL && swap_index_1_ptr == list->head)
+    {
+        list->head = swap_index_2_ptr;
     }
     else
     {
-        for (int i = 0; i < swap_index_2 - 1; i++)
-        {
-            iterator_2_prev = iterator_2_prev->next;
-        }
+        swap_index_1_prev_ptr->next = swap_index_2_ptr;
     }
 
-    for (int i = 0; i < swap_index_2; i++)
-    {
-        iterator_2 = iterator_2->next;
-    }
+    swap_index_2_prev_ptr->next = swap_index_1_ptr;
+    ListNode *temp = swap_index_1_ptr->next;
+    swap_index_1_ptr->next = swap_index_2_ptr->next;
+    swap_index_2_ptr->next = temp;
 
-    if (iterator_1 == NULL || iterator_2 == NULL || iterator_1 == iterator_2)
-    {
-        printf("Couldn't located indexes in ListSwap\n");
-        return;
-    }
-
-    // adjacent swap
-    if (iterator_2_prev == iterator_1)
-    {
-        return;
-    }
-    else if (iterator_1_prev == iterator_2)
-    {
-        return;
-    }
-
-    // error checking complete, swapping begin
-
-    // if (iterator_1_prev == NULL)
-    // {
-    //     printf("[JOSH]: it_1_prev NULL it_1 %d\n", iterator_1->value);
-    // }
-    // else
-    // {
-    //     printf("[JOSH]: it_1_prev %d it_1 %d\n", iterator_1_prev->value, iterator_1->value);
-    // }
-    // if (iterator_2_prev == NULL)
-    // {
-    //     printf("[JOSH]: it_2_prev NULL it_2 %d\n", iterator_2->value);
-    // }
-    // else
-    // {
-    //     printf("[JOSH]: it_2_prev %d it_2 %d\n", iterator_2_prev->value, iterator_2->value);
-    // }
-
-    // exit(1);
-
-    ListNode *temp = iterator_1->next;
-    // printf("\n\n[JOSH]: %d\n\n", temp->next->value);
-    if (iterator_2_prev != NULL && iterator_2_prev->next == iterator_2)
-    {
-        iterator_2_prev->next = iterator_1;
-    }
-    iterator_1->next = iterator_2->next;
-    if (iterator_1_prev != NULL && iterator_1_prev->next == iterator_1)
-    {
-        iterator_1_prev->next = iterator_2;
-    }
-
-    iterator_2->next = temp;
-
-    if (swap_index_1 == 0)
-    {
-        list->head = iterator_2;
-    }
-    else if (swap_index_2 == 0)
-    {
-        list->head = iterator_1;
-    }
-
-    // printf("\n\n[JOSH]: %d %d\n\n", iterator_1->next->value, iterator_2->next->value);
     return;
 }
