@@ -23,19 +23,22 @@ int main(void)
         return EXIT_FAILURE;
     }
 
-    Card *card = GetTopOfDeck(deck);
-    if (card == NULL)
+    for (int i = 0; i < 10; i++)
     {
-        FreeHand(josh_hand);
-        FreeDeck(deck);
-        printf("[FATAL]: Couldn't add card into player name\n");
-        return EXIT_FAILURE;
+        Card *card = GetTopOfDeck(deck);
+        if (card == NULL)
+        {
+            FreeHand(josh_hand);
+            FreeDeck(deck);
+            printf("[FATAL]: Couldn't add card into player name\n");
+            return EXIT_FAILURE;
+        }
+        (void)PutCardInHand(josh_hand, card);
     }
-    (void)PutCardInHand(josh_hand, card);
-    PrintCards(josh_hand->cards);
 
+    PrintCards(josh_hand->cards, false);
+    printf("Deck has %d Cards and %s's Hand has %d Cards!\n", deck->size, josh_hand->name, josh_hand->size);
     FreeHand(josh_hand);
     FreeDeck(deck);
-
     return EXIT_SUCCESS;
 }

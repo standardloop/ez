@@ -70,7 +70,8 @@ typedef struct
 } Deck;
 
 void PrintCard(Card *, bool);
-void PrintCards(Card *);
+void PrintCards(Card *, bool);
+
 void FreeCard(Card *);
 void FreeAllCards(Card *);
 Card *InitCard(char *, char *);

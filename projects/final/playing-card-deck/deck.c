@@ -21,7 +21,7 @@ void swapCardsInDeck(Deck *deck, int swap_index_1, int swap_index_2)
     if (deck == NULL || (swap_index_1 == swap_index_2) || isDeckEmpty(deck) || deck->cards == NULL ||
         swap_index_1 < 0 || swap_index_2 < 0 || swap_index_1 > deck->size || swap_index_2 > deck->size)
     {
-        printf("Invalid inputs to swapCardsInDeck\n");
+        //printf("Invalid inputs to swapCardsInDeck\n");
         return;
     }
     if (swap_index_1 > swap_index_2)
@@ -48,7 +48,7 @@ void swapCardsInDeck(Deck *deck, int swap_index_1, int swap_index_2)
 
     if (swap_index_1_ptr == NULL || swap_index_2_ptr == NULL)
     {
-        printf("Couldn't located nodes at index in swapCardsInDeck\n");
+        //printf("Couldn't located nodes at index in swapCardsInDeck\n");
         return;
     }
     // only need to check head for swap_index_1 because
@@ -72,7 +72,7 @@ void ShuffleDeck(Deck *deck)
 {
     if (deck == NULL || isDeckEmpty(deck))
     {
-        printf("Invalid inputs to ShuffleDeck\n");
+        //printf("Invalid inputs to ShuffleDeck\n");
         return;
     }
     srand(time(NULL));
