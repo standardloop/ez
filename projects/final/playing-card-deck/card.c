@@ -98,6 +98,15 @@ void FreeAllCards(Card *head)
     }
 }
 
+void PrintCards(Card *head)
+{
+    while (head != NULL)
+    {
+        (void)PrintCard(head, false);
+        head = head->next;
+    }
+}
+
 void PrintCard(Card *card, bool simple_print)
 {
     if (simple_print)

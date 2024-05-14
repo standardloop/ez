@@ -7,6 +7,7 @@
 #define NUM_CARDS_IN_SUITS (NUM_CARDS_IN_STANDARD_DECK / NUM_SUITS)
 
 #define ERROR_FIXME -1
+#define NULL_CHAR '\0'
 
 #define CARD_WIDTH 12
 #define CARD_HEIGHT 10
@@ -69,6 +70,7 @@ typedef struct
 } Deck;
 
 void PrintCard(Card *, bool);
+void PrintCards(Card *);
 void FreeCard(Card *);
 void FreeAllCards(Card *);
 Card *InitCard(char *, char *);
@@ -84,6 +86,5 @@ void FreeHand(Hand *);
 Deck *InitDeck();
 void ShuffleDeck(Deck *);
 void FreeDeck(Deck *);
-void PrintDeck(Deck *);
 
 #endif

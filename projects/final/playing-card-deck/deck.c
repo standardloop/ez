@@ -285,23 +285,20 @@ void FreeDeck(Deck *deck)
 
 Card *GetTopOfDeck(Deck *deck)
 {
-    if (deck == NULL)
+    if (deck == NULL || isDeckEmpty(deck))
     {
         return NULL;
     }
-    return NULL;
-}
-
-void PrintDeck(Deck *deck)
-{
-    if (deck == NULL)
+    Card *top_card = deck->cards;
+    if (deck->size == 1)
     {
-        return;
+        deck->cards = NULL;
     }
-    Card *card_iterator = deck->cards;
-    while (card_iterator != NULL)
+    else
     {
-        (void)PrintCard(card_iterator, false);
-        card_iterator = card_iterator->next;
+        deck->cards = deck->cards->next;
     }
+    deck->size--;
+    top_card->next = NULL;
+    return top_card;
 }
