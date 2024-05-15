@@ -247,3 +247,7 @@ You can *implement* a language in 3 ways:
   - Performance via Prediction
   - Hierarchy of Memories
   - Dependaability via Redundancy
+
+
+- programming
+
