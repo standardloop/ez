@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int maxArr(int[], int);
 void printArr(int[], int);
@@ -7,8 +8,17 @@ int minArr(int[], int);
 
 int getFirstArrayElement(int[]);
 int getLastArrayElement(int[], int);
+void joshTestFunction(int[], int);
 
 void printDivider();
+
+void joshTestFunction(int arr[], int n)
+{
+    for (int i = 0; i < (n * n); i++)
+    {
+        printf("%d ", arr[i % n - 1]);
+    }
+}
 
 void printArr(int arr[], int n)
 {
@@ -105,6 +115,9 @@ int main(void)
     printf("[0]'th (First) Element %d\n", getFirstArrayElement(arr));
     printDivider();
     printf("[n-1]'th (Last) Element %d\n", getLastArrayElement(arr, n));
+
+    printDivider();
+    joshTestFunction(arr, n);
 
     return 0;
 }
