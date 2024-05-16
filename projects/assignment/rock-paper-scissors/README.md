@@ -18,6 +18,10 @@ I want you to write a program that does the following:
 - Plays Rock Paper Scissors against the Computer and keeps track of the score
 - The computer to be random (equal chance of selecting rock, paper, or scissors)
 
+This program should be 75 - 200 LOC (lines of code)
+
+Mine was 152 lines including empty lines
+
 ## Example Execution 
 
 ```txt
@@ -34,6 +38,16 @@ q
 Thanks for playing!
 
 $ ./rock-paper-scissors
+
+Please enter:
+'r' for rock
+'p' for paper
+'s' for scissors
+'q' to exit
+'b' to display scoreboard
+
+l
+You entered an invalid input, please try again
 
 Please enter:
 'r' for rock

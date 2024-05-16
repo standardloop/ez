@@ -120,7 +120,7 @@ int main(void)
             player_choice = parsePlayerInput(player_input);
             if (player_choice == Error)
             {
-                printf("\nYou entered an invalid input, please try again\n");
+                printf("You entered an invalid input, please try again\n");
             }
             else
             {
@@ -146,6 +146,5 @@ int main(void)
             }
         }
     }
-
     return EXIT_SUCCESS;
 }
