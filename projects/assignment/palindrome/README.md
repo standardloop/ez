@@ -12,9 +12,13 @@ I want you to write a program that does the following:
 - print the results and return 0
 - if no input is provided, display an error message and return 1
 
+This program should be 30 - 70 LOC (lines of code)
+
+Mine was 45 lines including empty lines
+
 ## Example Execution 
 
-```sh
+```txt
 $ ./palindrome
 Need an input string!
 
