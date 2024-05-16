@@ -1,4 +1,4 @@
-# Palindrome
+# Yes
 
 ## Background
 yes – be repetitively affirmative
