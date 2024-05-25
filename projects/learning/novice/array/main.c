@@ -47,7 +47,6 @@ int searchArr(int arr[], int n, int x)
             return i;
         }
     }
-
     return -1;
 }
 
@@ -96,28 +95,29 @@ int main(void)
 {
     printDivider();
     int arr[] = {2, 12323, 3, 4, 123213, 10, 40, 877672, 42, 1, 6023, 88832};
-    int x = 10;
+    int target = 40;
     int n = sizeof(arr) / sizeof(arr[0]);
 
     printArr(arr, n);
     printDivider();
 
-    int result = searchArr(arr, n, x);
+    int result = searchArr(arr, n, target);
     result != -1 ? printf("Element is present at index %d\n", result) : printf("Element is not present in array\n");
-    printDivider();
-    result = searchArr(arr, n, -3);
-    result != -1 ? printf("Element is present at index %d\n", result) : printf("Element is not present in array\n");
-    printDivider();
-    printf("maxArr element is: %d\n", maxArr(arr, n));
-    printDivider();
-    printf("minArr element is: %d\n", minArr(arr, n));
-    printDivider();
-    printf("[0]'th (First) Element %d\n", getFirstArrayElement(arr));
-    printDivider();
-    printf("[n-1]'th (Last) Element %d\n", getLastArrayElement(arr, n));
 
-    printDivider();
-    joshTestFunction(arr, n);
+    // printDivider();
+    // result = searchArr(arr, n, -3);
+    // result != -1 ? printf("Element is present at index %d\n", result) : printf("Element is not present in array\n");
+    // printDivider();
+    // printf("maxArr element is: %d\n", maxArr(arr, n));
+    // printDivider();
+    // printf("minArr element is: %d\n", minArr(arr, n));
+    // printDivider();
+    // printf("[0]'th (First) Element %d\n", getFirstArrayElement(arr));
+    // printDivider();
+    // printf("[n-1]'th (Last) Element %d\n", getLastArrayElement(arr, n));
+
+    // printDivider();
+    // joshTestFunction(arr, n);
 
     return 0;
 }
