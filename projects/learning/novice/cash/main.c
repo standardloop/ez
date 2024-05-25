@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     int amount = atoi(argv[1]);
 
-    if (amount < 0 || amount == 0)
+    if (amount <= 0)
     {
         printf("Please enter an argument that is an integer and is greater than 0\n");
         return EXIT_FAILURE;
